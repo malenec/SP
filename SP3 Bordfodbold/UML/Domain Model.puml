@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object Admin
+object Player
+object Team
+object Game
+object Result
+object Registration
+object Tournament
+object Knockout
+object GroupTournament
+object Scoreboard
+object View
+
+Admin o-- Tournament
+Tournament <|-- GroupTournament
+Tournament <|-- Knockout
+GroupTournament o-- Game
+Knockout o-- Game
+Team o-- Player
+Tournament o-- Team
+Game o-- Result
+Tournament o-- Scoreboard
+Scoreboard o-- Result
+Tournament o-- Registration
+Tournament o-- View
+
+@enduml

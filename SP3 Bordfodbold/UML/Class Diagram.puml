@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract Tournament
+
+Main *-- Admin: has
+Admin *-- Tournament
+Main *-- User
+Tournament <|-- GroupTournament: is
+Tournament <|-- Knockout: is
+GroupTournament *-- Match: has
+Knockout *-- Match: has
+Team *-- Player: has
+Tournament *-- Team: has
+Tournament *-- Scoreboard: has
+Main *-- View: has
+Main *-- UI: has
+User *-- Tournament
+
+Admin : adminMainMenu()
+Admin : createTournament()
+Admin : openRegistration()
+Admin : closeRegistration()
+Admin : setTimeTable()
+Admin : editGamePlan()
+Admin : startMatch()
+Admin : returnToAdminMainMenu()
+Admin : String tournamentTypeChoice
+
+User : userRegistrationMenu()
+User : userViewTournamentMenu()
+User : createTeam()
+User : removeTeam()
+
+Match : calculateResult()
+Match : countNumberOfGoals()
+Match : int numberOfGoalsTeam1
+Match : int numberOfGoalsTeam2
+
+Team : int totalScore
+Team : int numberOfGoals
+Team : String teamName
+Team : addPlayer()
+Team : removePlayer()
+Team : toString()
+Team : ArrayList<Player>
+
+Tournament : addTeam()
+Tournament : ArrayList<Team>
+Tournament : makeGamePlan()
+
+Player : String playerName
+Player : String schoolClassName
+Player : int phoneNumber
+Player : toString()
+
+Scoreboard : Array[Team.score]
+Scoreboard : setScoreboard()
+
+View : showGamePlan()
+View : showScoreboard()
+View : showTimetable()
+View : showAdminMenu()
+View : showUserMenu()
+
+UI : getUserInput()
+
+Knockout : Array[Winner]
+Knockout : ArrayList<Team>
+Knockout : Arraylist<Array[Team]>
+Knockout : addTeam() @Override
+Knockout : makeGamePlan() @Override generateBracket
+@enduml
